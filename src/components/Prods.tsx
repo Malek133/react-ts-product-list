@@ -1,5 +1,5 @@
 import {Products} from './data'
-
+import Image from './Image';
 import Btn from './ui/Btn';
 import { FilePenLine } from 'lucide-react';
 import { Trash } from 'lucide-react';
@@ -9,8 +9,8 @@ const Prods = () => {
     const RenderProducts = Products.map((product) => (
     <div className='border-2 border-gray-300 rounded' 
     key={product.id}>
-      <img className='rounded' 
-      src={product.imageUrl} alt={product.title} />
+      <Image className='rounded' 
+      imageURL={product.imageUrl} alt={product.title} />
 
       <div className='flex justify-between items-center my-1 mx-3'>
         <div className='text-center text-lg font-semibold'>
@@ -29,7 +29,8 @@ const Prods = () => {
     </div>
       ));
   return (
-    <div className='mx-5 container grid grid-cols-4 gap-4'>
+    <div className='m-5 container grid grid-cols-1 md:grid-cols-2
+    lg:grid-cols-3 xl:grid-cols-4 gap-4'>
        {RenderProducts}
     </div>
   )
