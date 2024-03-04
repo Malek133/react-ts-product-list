@@ -1,22 +1,25 @@
 
 import './App.css'
+import Prods from './components/Prods'
 import Btn from './components/ui/Btn'
-
 function App() {
  
-
+  
   return (
     <>
-     <h1 className='m-4'> Alphazero</h1>
+     <h1 className=' m-4 text-center text-4xl font-bold'> 
+     Alphazero</h1>
 
-     <Btn className='bg-red-600'>
+     <Btn cla='bg-red-600'>
       Click me!
      </Btn>
 
-     <Btn className='bg-black' wi='w-fit'>
+     <Btn cla='bg-black' wi='w-fit'>
       Clicked
      </Btn>
-     
+
+     <Prods />
+    
     </>
   )
 }
