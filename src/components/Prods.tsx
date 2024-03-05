@@ -2,7 +2,7 @@ import {Products} from './data'
 import Image from './Image';
 import Btn from './ui/Btn';
 import { FilePenLine } from 'lucide-react';
-import { Trash } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 
 const Prods = () => {
@@ -21,9 +21,16 @@ const Prods = () => {
       
       <div><p className='my-5 m-2'>{product.description}</p></div>
 
+       <div className='m-5 flex justify-start items-center space-x-1'>
+       <div className="h-5 w-5  rounded-full bg-yellow-500" />
+        <div className="h-5 w-5  rounded-full bg-sky-900 " />
+       <div className="w-5 h-5 rounded-full bg-red-600" />
+       <div className="w-5 h-5 rounded-full bg-emerald-700" />
+     </div>
+
       <div className='m-5 flex justify-center items-center space-x-3'>
-        <Btn cla="bg-green-700"><FilePenLine /></Btn>
-        <Btn cla="bg-red-700"><Trash /></Btn>
+        <Btn cla="bg-blue-900"><FilePenLine /></Btn>
+        <Btn cla="bg-red-700"><Trash2 /></Btn>
       </div>
       
     </div>

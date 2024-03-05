@@ -1,10 +1,21 @@
 
+import { useState } from 'react'
 import './App.css'
 import Prods from './components/Prods'
 import Btn from './components/ui/Btn'
  import Modal from './components/ui/Modal'
+
 function App() {
- 
+   
+  const [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
   
   return (
     <>
@@ -18,11 +29,18 @@ function App() {
      </Btn>
 
       <div className='container flex justify-end items-center'>
-        <Btn cla='bg-sky-900 text-xl' wi='w-fit'>
+        <Btn onClick={openModal} cla='bg-sky-900 text-xl' wi='w-fit'>
       Clicked
      </Btn>
       </div>
-      <Modal />
+      <Modal isOpen={isOpen} closeModal={closeModal} title='add new product' >
+        <div className='flex justify-center space-x-3'>
+           <Btn onClick={closeModal} cla='bg-sky-700 hover:bg-sky-600'>Cancel</Btn>
+        <Btn cla='bg-red-700 hover:bg-red-600'>Submit</Btn>
+        </div>
+       
+
+      </Modal>
      
 
      <Prods />
