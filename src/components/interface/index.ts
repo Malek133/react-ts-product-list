@@ -1,7 +1,14 @@
 export interface IProduct {
-    id:string,
+    id?:string | undefined,
       title:string ,
-      description:string,
+      des:string,
       imageUrl:string ,
-      price:number 
+      price:string 
+}
+
+export interface IFormInput {
+  id: string;
+  name: 'title' |'des'|'price' |'imageUrl'; 
+  label: string;
+  type: string;
 }

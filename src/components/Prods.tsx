@@ -22,10 +22,10 @@ const Prods = () => {
       <div><p className='my-5 m-2'>{product.description}</p></div>
 
        <div className='m-5 flex justify-start items-center space-x-1'>
-       <div className="h-5 w-5  rounded-full bg-yellow-500" />
+       <div className="h-5 w-5 bg-yellow-500" />
         <div className="h-5 w-5  rounded-full bg-sky-900 " />
        <div className="w-5 h-5 rounded-full bg-red-600" />
-       <div className="w-5 h-5 rounded-full bg-emerald-700" />
+       <div className="w-5 h-5  bg-emerald-700" />
      </div>
 
       <div className='m-5 flex justify-center items-center space-x-3'>
