@@ -1,15 +1,24 @@
-import {Products} from './data'
-import Image from './Image';
+
+// import {Products} from './data'
+import Image from './ui/Image';
+import { IProduct } from './interface';
 import Btn from './ui/Btn';
 import { FilePenLine } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 
 
-const Prods = () => {
-    const RenderProducts = Products.map((product) => (
-    <div className='border-2 border-gray-300 rounded' 
+interface IProps {
+  product:IProduct
+}
+
+const Prods = ({product}:IProps) => {
+
+  return (
+
+    <div className='m-5 container'>
+       <div className='border-2 border-gray-300 rounded' 
     key={product.id}>
-      <Image className='rounded' 
+      <Image className='container mb-4 rounded h-96' 
       imageURL={product.imageUrl} alt={product.title} />
 
       <div className='flex justify-between items-center my-1 mx-3'>
@@ -19,14 +28,11 @@ const Prods = () => {
         <span className='text-red-800'>{product.price}</span> $</div>
       </div>
       
-      <div><p className='my-5 m-2'>{product.description}</p></div>
+      <div>
+        <p className='my-5 m-2'>{product.des}</p>
+        </div>
 
-       <div className='m-5 flex justify-start items-center space-x-1'>
-       <div className="h-5 w-5 bg-yellow-500" />
-        <div className="h-5 w-5  rounded-full bg-sky-900 " />
-       <div className="w-5 h-5 rounded-full bg-red-600" />
-       <div className="w-5 h-5  bg-emerald-700" />
-     </div>
+     
 
       <div className='m-5 flex justify-center items-center space-x-3'>
         <Btn cla="bg-blue-900"><FilePenLine /></Btn>
@@ -34,12 +40,8 @@ const Prods = () => {
       </div>
       
     </div>
-      ));
-  return (
-    <div className='m-5 container grid grid-cols-1 md:grid-cols-2
-    lg:grid-cols-3 xl:grid-cols-4 gap-4'>
-       {RenderProducts}
     </div>
+   
   )
 }
 
