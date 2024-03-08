@@ -9,9 +9,21 @@ import { Trash2 } from 'lucide-react';
 
 interface IProps {
   product:IProduct
+  setProductToEdit:( product:IProduct) => void
+  openEditModal:() => void
+  setProductToEditIdx : (value:number) => void
+  idx:number
+  
 }
 
-const Prods = ({product}:IProps) => {
+const Prods = ({product,setProductToEdit,openEditModal
+  ,idx,setProductToEditIdx}:IProps) => {
+
+  const onEdit = () =>{
+    setProductToEdit(product)
+    openEditModal()
+    setProductToEditIdx(idx)
+  }
 
   return (
 
@@ -35,7 +47,7 @@ const Prods = ({product}:IProps) => {
      
 
       <div className='m-5 flex justify-center items-center space-x-3'>
-        <Btn cla="bg-blue-900"><FilePenLine /></Btn>
+        <Btn onClick={onEdit} cla="bg-blue-900"><FilePenLine /></Btn>
         <Btn cla="bg-red-700"><Trash2 /></Btn>
       </div>
       
