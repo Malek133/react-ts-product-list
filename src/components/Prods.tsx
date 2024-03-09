@@ -13,16 +13,22 @@ interface IProps {
   openEditModal:() => void
   setProductToEditIdx : (value:number) => void
   idx:number
+  openConfirmModal: () => void
   
 }
 
 const Prods = ({product,setProductToEdit,openEditModal
-  ,idx,setProductToEditIdx}:IProps) => {
+  ,idx,setProductToEditIdx,openConfirmModal}:IProps) => {
 
   const onEdit = () =>{
     setProductToEdit(product)
     openEditModal()
     setProductToEditIdx(idx)
+  }
+
+  const onRemove = () =>{
+    openConfirmModal()
+    setProductToEdit(product)
   }
 
   return (
@@ -48,7 +54,7 @@ const Prods = ({product,setProductToEdit,openEditModal
 
       <div className='m-5 flex justify-center items-center space-x-3'>
         <Btn onClick={onEdit} cla="bg-blue-900"><FilePenLine /></Btn>
-        <Btn cla="bg-red-700"><Trash2 /></Btn>
+        <Btn onClick={onRemove} cla="bg-red-700"><Trash2 /></Btn>
       </div>
       
     </div>

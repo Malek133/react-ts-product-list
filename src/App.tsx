@@ -12,6 +12,7 @@ import { productValidation } from './components/validation'
 import { v4 as uuid } from "uuid";
 import { ProductNameTypes } from './components/types'
 
+
 function App() {
   const ObjPro:IProduct = { title: "",des: "", imageUrl: "", price: "" }
   const [product,setProduct] = useState<IProduct>( ObjPro);
@@ -19,7 +20,7 @@ function App() {
   const [productToEditIdx, setProductToEditIdx] = useState<number>(0);
   const [productToEdit, setProductToEdit] = useState<IProduct>(ObjPro);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);  
- 
+  const [isOpenConfirmModal, setIsOpenConfirmModal] = useState(false);
   const [errors,setErrors] = useState({  title: "", 
   des: "", imageUrl: "", price: "" });
   const [isOpen, setIsOpen] = useState(false)
@@ -29,6 +30,10 @@ function App() {
 
   const  closeEditModal = () => {setIsOpenEditModal(false)}
   const openEditModal= () => { setIsOpenEditModal(true)}
+
+
+  const closeConfirmModal = () => setIsOpenConfirmModal(false);
+  const openConfirmModal = () => setIsOpenConfirmModal(true);
 
   const onCancel = () => {
      closeModal()
@@ -115,7 +120,8 @@ setProductss(updateProducts)
   <Prods key={product.id} product={product} 
   openEditModal={openEditModal}
   setProductToEdit={setProductToEdit} idx={idx}
-  setProductToEditIdx={setProductToEditIdx} />
+  setProductToEditIdx={setProductToEditIdx}
+  openConfirmModal={openConfirmModal} />
    ));
 
 
@@ -152,6 +158,13 @@ setProductss(updateProducts)
    <ErrorMessage msg={errors[name]} /> 
   </div>
       )
+    }
+
+    const removeProductHandler = ()=>{
+      const filtered = productss.filter(product => 
+        product.id !== productToEdit.id);
+       setProductss(filtered)
+      closeConfirmModal();
     }
   
   return (
@@ -219,6 +232,26 @@ setProductss(updateProducts)
          </form>
       </Modal>
       {/* FIN EDIT MODALE */}
+
+      {/* DELETE PRODUCT CONFIRM MODAL */}
+      <Modal
+        isOpen={isOpenConfirmModal}
+        closeModal={closeConfirmModal}
+     title="Are you sure you want to remove this Product from your Store?"
+      >
+        <div className="flex items-center space-x-3">
+          <Btn cla="bg-[#c2344d] hover:bg-red-800" 
+          onClick={removeProductHandler}>
+            Yes, remove
+          </Btn>
+          <Btn type="button" 
+          cla="bg-[#f5f5fa] hover:bg-gray-300 !text-black" 
+          onClick={closeConfirmModal}>
+            Cancel
+          </Btn>
+        </div>
+      </Modal>
+       {/* DELETE PRODUCT CONFIRM MODAL */}
 
 
      
