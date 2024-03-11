@@ -106,7 +106,6 @@ function App() {
    return;
  }
 
-//  setProductss(prev => [ {...product,id:uuid()},...prev]);
 const updateProducts=[...productss,];
 updateProducts[productToEditIdx]= {...productToEdit}
 setProductss(updateProducts)
